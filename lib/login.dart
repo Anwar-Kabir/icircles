@@ -1,8 +1,8 @@
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:icircles/reuse_widget.dart';
+import 'package:icircles/constants.dart';
+import 'package:icircles/globle_widget.dart';
 import 'package:icircles/signup.dart';
 
 class Login extends StatefulWidget {
@@ -17,196 +17,233 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final space = SizedBox(height: 50);
+
     return Scaffold(
       //add here background color. Adobe XD not working that why color not found.
-      backgroundColor: Colors.grey[600],
-      body: Padding(
-        padding: const EdgeInsets.only(top: 15.0),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Image.asset("assets/images/1.png"),
-                Divider(
-                  color: Colors.yellow,
-                  height: 36,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Column(
-                    children: [
-                      Text("Welcome !",
-                          style: TextStyle(fontSize: 35.0, color: Colors.blue)),
-                      Text("Login to your account !",
-                          style: TextStyle(fontSize: 25.0, color: Colors.yellow)),
-                      reusesizebox(),
-                      TextField(
-                          decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              prefixIcon: Icon(
-                                Icons.person,
-                                color: Colors.yellow,
-                              ),
-                              // hintText: 'Email or Username',
-                              label: Text('Email or Username'),
-                              border: OutlineInputBorder())),
-                      reusesizebox(),
-                      TextField(
-                          decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: Colors.yellow,
-                              ),
-                              suffixIcon: Icon(
-                                Icons.visibility,
-                                color: Colors.yellow,
-                              ),
-                              label: Text('Password'),
-                              border: OutlineInputBorder())),
-                      reusesizebox(),
-                      Container(
-                          alignment: Alignment.centerRight,
-                          child: Text("Forgotten Password?",
-                              style: TextStyle(
-                                fontSize: 25.0,
+      backgroundColor: kbackground,
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+            decoration: BoxDecoration(
+            image: DecorationImage(
+            image: AssetImage(
+            "assets/images/background_image.png"),
+   // fit: BoxFit.cover,
+    ),
+    ),
+
+
+
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Image.asset("assets/images/logo.png"),
+                  Divider(
+                    color: Colors.yellow,
+                    height: 36,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        Text("Welcome !",
+                            style: TextStyle(fontSize: 20.0, color: Colors.blue)),
+                        Text("Login to your account",
+                            style: TextStyle(fontSize: 17.0, color: kTextFormBoxPer)),
+                        reusesizebox(),
+                        const TextField(
+                            decoration: InputDecoration(
+                                fillColor: kTextForm,
+                                filled: true,
+                                prefixIcon: Icon(
+                                  Icons.person,
+                                  color: kTextFormBoxPer,
+                                ),
+                               // hintText: 'Email or Username',
+                                label: Text('Email or Username',style: TextStyle(
+                                  color: kText,
+                                ),),
+
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: kbackground)
+                                  // borderSide: BorderSide(color: Colors.greenAccent, width: 5.0),
+                                  //borderSide:  BorderSide(color: Colors.pink),
+                                ),
+
+                                border: OutlineInputBorder(
+                                 // borderSide: BorderSide(color: Colors.greenAccent, width: 5.0),
+                                  //borderSide:  BorderSide(color: Colors.pink),
+                                ))),
+                        reusesizebox(),
+                        TextField(
+                            decoration: InputDecoration(
+                                fillColor: kTextForm,
+                                filled: true,
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: kTextFormBoxPer,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.visibility,
+                                  color: kTextFormBoxPer,
+                                ),
+                                label: Text('Password', style: TextStyle(
+                                  color: kText,),),
+
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: kbackground)
+                                  // borderSide: BorderSide(color: Colors.greenAccent, width: 5.0),
+                                  //borderSide:  BorderSide(color: Colors.pink),
+                                ),
+
+                                border: OutlineInputBorder())),
+                        reusesizebox(),
+                        Container(
+                            alignment: Alignment.centerRight,
+                            child: Text("Forgotten Password?",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: kText,
+                                ))),
+                        reusesizebox(),
+                        Row(
+                          children: [
+                            Checkbox(
+                              value: _value,
+                              onChanged: (value) {
+                                setState(() {
+                                  _value = value!;
+                                });
+                              },
+                              activeColor: Colors.green,
+                              fillColor: MaterialStateProperty.all(kTextFormBoxPer),// kTextFormBoxPer,
+
+                            ),
+                            Text("Remember Me", style: TextStyle(
+                              color: kText,
+                            )),
+                          ],
+                        ),
+                        reusesizebox(),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Sign in",style: TextStyle(
+                            color: Colors.white.withOpacity(1.0)
+                          ),),
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(ksignupbutton),
+                              shape:
+                                  MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                //side: BorderSide(color: Colors.red)
                               ))),
-                      reusesizebox(),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: _value,
-                            onChanged: (value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            },
-                            activeColor: Colors.green,
+                        ),
+                        reusesizebox(),
+                        Row(children: <Widget>[
+
+                          Expanded(
+                            child: new Container(
+                                margin:
+                                    const EdgeInsets.only(left: 10.0, right: 20.0),
+                                child: Divider(
+                                  color: Colors.yellow,
+                                  height: 36,
+                                )),
                           ),
-                          Text("Forgotten Password?", style: TextStyle()),
-                        ],
-                      ),
-                      reusesizebox(),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Sign in"),
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.yellow[500]),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              //side: BorderSide(color: Colors.red)
-                            ))),
-                      ),
-                      reusesizebox(),
-                      Row(children: <Widget>[
+
+
+
+                          Text("Or sign in with",style: TextStyle(color: kText),),
 
                         Expanded(
-                          child: new Container(
-                              margin:
-                                  const EdgeInsets.only(left: 10.0, right: 20.0),
-                              child: Divider(
-                                color: Colors.yellow,
-                                height: 36,
-                              )),
-                        ),
-
-
-
-                        Text("Or sign in with"),
-
-                      Expanded(
-                          child: new Container(
-                              margin:
-                                  const EdgeInsets.only(left: 20.0, right: 10.0),
-                              child: Divider(
-                                color: Colors.yellow,
-                                height: 36,
-                              )),
-                        ),
-                      ]),
-                      reusesizebox(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 2.0, color: Colors.yellow),
-                              primary: Colors.grey,
-                              shape: CircleBorder(),
-                              padding: EdgeInsets.all(15),
-                            ),
-                            child: Icon(
-                              Icons.android_outlined,
-                              color: Colors.yellow,
-                              size: 15,
-                            ),
-                            onPressed: () {},
+                            child: new Container(
+                                margin:
+                                    const EdgeInsets.only(left: 20.0, right: 10.0),
+                                child: Divider(
+                                  color: Colors.yellow,
+                                  height: 36,
+                                )),
                           ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 2.0, color: Colors.yellow),
-                              primary: Colors.grey,
-                              shape: CircleBorder(),
-                              padding: EdgeInsets.all(15),
-                            ),
-                            child: Icon(
-                              Icons.home,
-                              color: Colors.yellow,
-                              size: 15,
-                            ),
-                            onPressed: () {},
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              side: BorderSide(width: 2.0, color: Colors.yellow),
-                              primary: Colors.grey,
-                              shape: CircleBorder(),
-                              padding: EdgeInsets.all(15),
-                            ),
-                            child: Icon(
-                              Icons.info,
-                              color: Colors.yellow,
-                              size: 15,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
-                      reusesizebox(),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(children: <InlineSpan>[
-                          TextSpan(
-                              text: "Don't have an account?",
-                              style: TextStyle(color: Colors.black87)),
-                          TextSpan(
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Signup()));
-                                },
-                              text: ' Sign up here',
-                              style: TextStyle(
-                                  color: Colors.yellow[800],
-                                  fontWeight: FontWeight.normal)),
                         ]),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                        reusesizebox(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                side: BorderSide(width: 2.0, color: Colors.yellow),
+                                primary: kbackground,
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(15),
+                              ),
+                              child: Text("G",style: TextStyle(
+                                fontSize: 15.0,
+                                color: kTextFormBoxPer
+                              ),),
+
+
+                              onPressed: () {},
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                side: BorderSide(width: 2.0, color: Colors.yellow),
+                                primary: kbackground,
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(15),
+                              ),
+                              child: Text("f",style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: kTextFormBoxPer
+                              ),),
+                              onPressed: () {},
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                side: BorderSide(width: 2.0, color: Colors.yellow),
+                                primary: kbackground,
+                                shape: CircleBorder(),
+                                padding: EdgeInsets.all(15),
+                              ),
+                              child:
+                              Image.asset('assets/images/twitter.png'),
+
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                        reusesizebox(),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(children: <InlineSpan>[
+                            TextSpan(
+                                text: "Don't have an account?",
+                                style: TextStyle(color: kText)),
+                            TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Signup()));
+                                  },
+                                text: ' Sign up here',
+                                style: TextStyle(
+                                    color: kTextFormBoxPer,
+                                    fontWeight: FontWeight.normal)),
+                          ]),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
         ),
+          ),
       ),
     );
   }
